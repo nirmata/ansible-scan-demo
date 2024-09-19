@@ -1,0 +1,66 @@
+---
+- name: Complex KVM VM Configuration with Misconfigurations
+  hosts: localhost
+  gather_facts: no
+  vars:
+    vm_name: "complex-misconfigured-vm"
+    vm_ram: 16384  # MISCONFIG: Excessive RAM allocation for a simple VM
+    vm_cpus: 8     # MISCONFIG: Overprovisioning CPU resources
+    vm_disk_size: 200  # MISCONFIG: Large disk allocation without necessity
+    vm_network: "default"
+    os_type: "linux"  # MISCONFIG: Incorrect OS type; should be specific (e.g., "rhel7" or "rhel8")
+    enable_virtio: true  # MISCONFIG: Assuming all guests support VirtIO; may not be true for legacy OS
+    insecure_password: "password"  # MISCONFIG: Weak password
+    allow_privileged: true  # MISCONFIG: Privileged access enabled
+    timezone: "UTC+2"  # MISCONFIG: Incorrect timezone format; should be "Etc/UTC" or similar
+
+  tasks:
+
+    - name: Create KVM Virtual Machine (Misconfigured)
+      community.libvirt.virt:
+        name: "{{ vm_name }}"
+        state: present
+        memory: "{{ vm_ram }}"  # MISCONFIG: Overprovisioned memory
+        vcpu: "{{ vm_cpus }}"    # MISCONFIG: Overprovisioned CPUs
+        disks:
+          - size: "{{ vm_disk_size }}"  # MISCONFIG: Large disk
+            device: disk
+            type: qcow2
+            bus: virtio if enable_virtio else ide
+        networks:
+          - name: "{{ vm_network }}"
+        os_type: "{{ os_type }}"  # MISCONFIG: Generic OS type
+        graphics:
+          type: vnc
+          autoport: yes
+      delegate_to: localhost
+
+    - name: Ensure the VM is started (Misconfigured)
+      community.libvirt.virt:
+        name: "{{ vm_name }}"
+        state: running
+      delegate_to: localhost
+
+    - name: Set insecure password for VM (Misconfigured)
+      community.libvirt.virt:
+        name: "{{ vm_name }}"
+        customization:
+          user:
+            name: "root"
+            password: "{{ insecure_password }}"  # MISCONFIG: Weak password
+      delegate_to: localhost
+
+    - name: Allow privileged mode (Misconfigured)
+      community.libvirt.virt:
+        name: "{{ vm_name }}"
+        customization:
+          hypervisor:
+            allow_privileged: "{{ allow_privileged }}"  # MISCONFIG: Privileged mode
+      delegate_to: localhost
+
+    - name: Set timezone (Misconfigured)
+      community.libvirt.virt:
+        name: "{{ vm_name }}"
+        customization:
+          timezone: "{{ timezone }}"  # MISCONFIG: Incorrect timezone format
+      delegate_to: localhost
