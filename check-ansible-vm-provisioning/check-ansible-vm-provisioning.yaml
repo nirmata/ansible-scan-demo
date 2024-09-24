@@ -1,0 +1,24 @@
+apiVersion: json.kyverno.io/v1alpha1
+kind: ValidatingPolicy
+metadata:
+  name: check-ansible-vm-provisioning
+spec:
+  rules:
+    - name: check-ansible-vm-provisioning
+      match:
+        all:
+        - (plays[].tasks[].hosts[].values(@)[?action=='community.vmware.vmware_guest'][] | length(@) > `0`): true
+      assert:
+        all:
+        - message: >-
+            Make sure to not overprovision resources. CPUs should be less than 4, memory should be less than 4096 MB, 
+            and disk size should be less than 100 GB to avoid unnecessary resource allocation.
+          check:
+            ~.(plays[].tasks[].hosts[].values(@)[?action=='community.vmware.vmware_guest'][]):
+                invocation:
+                    module_args:
+                        hardware:
+                            (num_cpus < `4`): true
+                            (memory_mb < `4096`): true
+                        ~.(disk):
+                            (size_gb < `100`): true

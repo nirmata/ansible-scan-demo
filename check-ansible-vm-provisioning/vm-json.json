@@ -1,0 +1,171 @@
+{
+    "custom_stats": {},
+    "global_custom_stats": {},
+    "plays": [
+        {
+            "play": {
+                "duration": {
+                    "end": "2024-09-24T18:15:43.901186Z",
+                    "start": "2024-09-24T18:15:43.568919Z"
+                },
+                "id": "0242ac11-0003-503d-9fc3-000000000001",
+                "name": "Create a new VM Example VM on server example.host.com",
+                "path": "/workspaces/ubuntu/nirmata/ansible-scan-demo/vm_setup.yaml:1"
+            },
+            "tasks": [
+                {
+                    "hosts": {
+                        "localhost": {
+                            "_ansible_no_log": false,
+                            "action": "community.vmware.vmware_guest",
+                            "changed": false,
+                            "failed": true,
+                            "invocation": {
+                                "module_args": {
+                                    "advanced_settings": [],
+                                    "annotation": null,
+                                    "cdrom": [],
+                                    "cluster": null,
+                                    "convert": null,
+                                    "customization": {
+                                        "autologon": null,
+                                        "autologoncount": null,
+                                        "dns_servers": null,
+                                        "dns_suffix": null,
+                                        "domain": null,
+                                        "domainadmin": null,
+                                        "domainadminpassword": null,
+                                        "existing_vm": null,
+                                        "fullname": null,
+                                        "hostname": null,
+                                        "hwclockUTC": null,
+                                        "joindomain": null,
+                                        "joinworkgroup": null,
+                                        "orgname": null,
+                                        "password": null,
+                                        "productid": null,
+                                        "runonce": null,
+                                        "script_text": null,
+                                        "timezone": null
+                                    },
+                                    "customization_spec": null,
+                                    "customvalues": [],
+                                    "datacenter": "Datacenter1",
+                                    "datastore": null,
+                                    "delete_from_inventory": false,
+                                    "disk": [
+                                        {
+                                            "autoselect_datastore": null,
+                                            "controller_number": 0,
+                                            "controller_type": "lsilogic",
+                                            "datastore": "datastore1",
+                                            "disk_mode": null,
+                                            "filename": null,
+                                            "size": null,
+                                            "size_gb": 250,
+                                            "size_kb": null,
+                                            "size_mb": null,
+                                            "size_tb": null,
+                                            "type": "thin",
+                                            "unit_number": 0
+                                        }
+                                    ],
+                                    "encryption": {
+                                        "encrypted_ft": null,
+                                        "encrypted_vmotion": null
+                                    },
+                                    "esxi_hostname": null,
+                                    "folder": "/Datacenter1/vm/Production",
+                                    "force": false,
+                                    "guest_id": "centos64Guest",
+                                    "hardware": {
+                                        "boot_firmware": "efi",
+                                        "cpu_limit": null,
+                                        "cpu_reservation": null,
+                                        "cpu_shares": null,
+                                        "cpu_shares_level": null,
+                                        "hotadd_cpu": null,
+                                        "hotadd_memory": null,
+                                        "hotremove_cpu": null,
+                                        "iommu": null,
+                                        "max_connections": null,
+                                        "mem_limit": null,
+                                        "mem_reservation": null,
+                                        "mem_shares": null,
+                                        "mem_shares_level": null,
+                                        "memory_mb": 16384,
+                                        "memory_reservation_lock": null,
+                                        "nested_virt": null,
+                                        "num_cpu_cores_per_socket": 2,
+                                        "num_cpus": 8,
+                                        "scsi": null,
+                                        "secure_boot": null,
+                                        "version": "omit",
+                                        "virt_based_security": null,
+                                        "vpmc_enabled": null
+                                    },
+                                    "hostname": "example.host.com",
+                                    "is_template": false,
+                                    "linked_clone": false,
+                                    "name": "Example VM",
+                                    "name_match": "first",
+                                    "networks": [
+                                        {
+                                            "device_type": "vmxnet3",
+                                            "name": "VM Network",
+                                            "type": "dhcp"
+                                        }
+                                    ],
+                                    "nvdimm": {
+                                        "label": null,
+                                        "size_mb": 1024,
+                                        "state": null
+                                    },
+                                    "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+                                    "port": 443,
+                                    "proxy_host": null,
+                                    "proxy_port": null,
+                                    "resource_pool": null,
+                                    "snapshot_src": null,
+                                    "state": "poweredoff",
+                                    "state_change_timeout": 0,
+                                    "template": null,
+                                    "use_instance_uuid": false,
+                                    "username": "exampleusername",
+                                    "uuid": null,
+                                    "validate_certs": false,
+                                    "vapp_properties": [],
+                                    "wait_for_customization": false,
+                                    "wait_for_customization_timeout": 3600,
+                                    "wait_for_ip_address": false,
+                                    "wait_for_ip_address_timeout": 300
+                                }
+                            },
+                            "msg": "Unknown error while connecting to vCenter or ESXi API at example.host.com:443 : [Errno -2] Name or service not known"
+                        }
+                    },
+                    "task": {
+                        "duration": {
+                            "end": "2024-09-24T18:15:43.901186Z",
+                            "start": "2024-09-24T18:15:43.585454Z"
+                        },
+                        "id": "0242ac11-0003-503d-9fc3-000000000003",
+                        "name": "Create a new VM Example VM",
+                        "path": "/workspaces/ubuntu/nirmata/ansible-scan-demo/vm_setup.yaml:5"
+                    }
+                }
+            ]
+        }
+    ],
+    "stats": {
+        "localhost": {
+            "changed": 0,
+            "failures": 0,
+            "ignored": 1,
+            "ok": 1,
+            "rescued": 0,
+            "skipped": 0,
+            "unreachable": 0
+        }
+    }
+}
