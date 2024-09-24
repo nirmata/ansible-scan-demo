@@ -1,0 +1,35 @@
+- name: Create a new VM Example VM on server example.host.com
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Create a new VM Example VM
+      community.vmware.vmware_guest:
+        hostname: "example.host.com"
+        username: "exampleusername"
+        password: "example_pwd"
+        validate_certs: false
+        datacenter: "Datacenter1"
+        folder: "/Datacenter1/vm/Production"
+        name: "Example VM"
+        guest_id: "centos64Guest" 
+        state: "poweredoff"
+        hardware:
+          memory_mb: 16384
+          num_cpus: 8
+          num_cpu_cores_per_socket: 2
+          version: omit
+          boot_firmware: "efi"
+        disk:
+          - size_gb: 250
+            type: thin
+            datastore: "datastore1"
+            controller_type: "lsilogic"  
+            controller_number: 0
+            unit_number: 0
+        networks:
+          - device_type: "vmxnet3"
+            name: "VM Network"
+            type: "dhcp"
+      register: vm_create_result
+      ignore_errors: yes
+
