@@ -5,6 +5,10 @@ This repository is to demonstrate Nirmata's capability in scanning Ansible playb
 To see the implications of the configurations without applying any changes to your environment, use the `--check` flag.
 
 ```bash
+cd check-ansible-vm-provisioning
+```
+
+```bash
 export ANSIBLE_STDOUT_CALLBACK=json
 ```
 
