@@ -7,7 +7,7 @@ spec:
     - name: check-ansible-vm-provisioning
       match:
         all:
-        - (plays[].tasks[].hosts[].values(@)[?action=='community.vmware.vmware_guest'][] | length(@) > `0`): true
+        - (plays[].tasks[].hosts[].values(@)[?action=='community.vmware.vmware_guest'][] || `[]` | length(@) > `0`): true
       assert:
         all:
         - message: >-
