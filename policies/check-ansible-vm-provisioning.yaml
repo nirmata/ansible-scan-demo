@@ -2,6 +2,12 @@ apiVersion: json.kyverno.io/v1alpha1
 kind: ValidatingPolicy
 metadata:
   name: check-ansible-vm-provisioning
+  annotations:
+    policies.kyverno.io/title: Validate if ECS Containers only have read-only access to its root filesystem
+    policies.kyverno.io/category: Ansible VM Configuration Best Practices
+    policies.kyverno.io/severity: medium
+    policies.kyverno.io/description: >-
+      Ensure efficient resource allocation by avoiding overprovisioning. This helps prevent unnecessary consumption of resources, improving overall system performance and cost efficiency.
 spec:
   rules:
     - name: check-ansible-vm-provisioning

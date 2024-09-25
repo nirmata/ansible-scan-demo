@@ -1,0 +1,39 @@
+name: Ansible Playbook Scan Pipeline Demo
+run-name: ${{ github.actor }} has triggered Scan Action 🚀
+on:
+  pull_request:
+    branches:
+      - "main"
+  push:
+    branches:
+      - "main"
+
+env:
+  NIRMATA_TOKEN: ${{ secrets.NIRMATA_TOKEN }}
+  NIRMATA_URL: ${{ secrets.NIRMATA_URL }}
+
+jobs:
+  NCTL-Scan-CDK:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+
+      - name: Check out main repository code
+        uses: actions/checkout@v4
+
+      - name: nctl-scan-installer
+        uses: nirmata/action-install-nctl-scan@v0.0.9
+
+      - name: Check nctl version
+        run: |
+          nctl version
+
+      - name: nctl login
+        run: nctl login --url $NIRMATA_URL --userid anusha.hegde@nirmata.com --token $NIRMATA_TOKEN
+        
+        
+      - name: NCTL Scan Repository for CDK
+        run: |
+          nctl scan json -r playbooks/vm-json.json --policies policies/ --publish
+  
+      - run: echo "🍏 This job's status is ${{ job.status }}."
