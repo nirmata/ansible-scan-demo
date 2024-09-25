@@ -13,7 +13,7 @@ env:
   NIRMATA_URL: ${{ secrets.NIRMATA_URL }}
 
 jobs:
-  NCTL-Scan-CDK:
+  NCTL-Scan-Ansible:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -32,7 +32,7 @@ jobs:
         run: nctl login --url $NIRMATA_URL --userid anusha.hegde@nirmata.com --token $NIRMATA_TOKEN
         
         
-      - name: NCTL Scan Repository for CDK
+      - name: NCTL Scan Repository for Ansible playbooks
         run: |
           nctl scan json -r playbooks/vm-json.json --policies policies/ --publish
   
