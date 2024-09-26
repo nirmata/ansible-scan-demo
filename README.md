@@ -13,5 +13,5 @@ export ANSIBLE_STDOUT_CALLBACK=json
 ```
 
 ```bash
-ansible-playbook vm_setup.yaml --check > vm_setup.json
+ansible-playbook playbooks/good_vm_setup.yaml --check > good_vm_setup.json
 ```
