@@ -47,6 +47,7 @@ jobs:
           export ANSIBLE_STDOUT_CALLBACK=json
           ansible-playbook good_vm_setup.yaml --check > good_vm_setup.json
           ansible-playbook bad_vm_setup.yaml --check > bad_vm_setup.json
+        continue-on-error: true
         
       - name: NCTL Scan Repository for Ansible playbooks
         run: |
