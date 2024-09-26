@@ -1,8 +1,8 @@
-- name: Create a new VM Example VM on server example.host.com
+- name: Create a bad VM Example VM on server example.host.com
   hosts: localhost
   gather_facts: no
   tasks:
-    - name: Create a new VM Example VM
+    - name: Create a bad VM Example VM
       community.vmware.vmware_guest:
         hostname: "example.host.com"
         username: "exampleusername"
@@ -10,7 +10,7 @@
         validate_certs: false
         datacenter: "Datacenter1"
         folder: "/Datacenter1/vm/Production"
-        name: "Example VM"
+        name: "Example Bad VM"
         guest_id: "centos64Guest" 
         state: "poweredoff"
         hardware:
@@ -31,5 +31,4 @@
             name: "VM Network"
             type: "dhcp"
       register: vm_create_result
-      ignore_errors: yes
 

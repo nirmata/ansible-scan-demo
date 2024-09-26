@@ -5,12 +5,12 @@
         {
             "play": {
                 "duration": {
-                    "end": "2024-09-24T18:15:43.901186Z",
-                    "start": "2024-09-24T18:15:43.568919Z"
+                    "end": "2024-09-26T13:21:42.851159Z",
+                    "start": "2024-09-26T13:21:42.330461Z"
                 },
-                "id": "0242ac11-0003-503d-9fc3-000000000001",
-                "name": "Create a new VM Example VM on server example.host.com",
-                "path": "/workspaces/ubuntu/nirmata/ansible-scan-demo/vm_setup.yaml:1"
+                "id": "829374ac-bf7a-35a3-e75b-000000000001",
+                "name": "Create a bad VM Example VM on server example.host.com",
+                "path": "/Users/anusha/Documents/ansible-scan-demo/playbooks/bad_vm_setup.yaml:1"
             },
             "tasks": [
                 {
@@ -19,6 +19,7 @@
                             "_ansible_no_log": false,
                             "action": "community.vmware.vmware_guest",
                             "changed": false,
+                            "exception": "Traceback (most recent call last):\n  File \"/var/folders/rh/7lnx0s7s5wxff6pn2th03gmr0000gp/T/ansible_community.vmware.vmware_guest_payload_1xl7sby0/ansible_community.vmware.vmware_guest_payload.zip/ansible_collections/community/vmware/plugins/module_utils/vmware.py\", line 31, in <module>\n    import requests\nModuleNotFoundError: No module named 'requests'\n",
                             "failed": true,
                             "invocation": {
                                 "module_args": {
@@ -107,7 +108,7 @@
                                     "hostname": "example.host.com",
                                     "is_template": false,
                                     "linked_clone": false,
-                                    "name": "Example VM",
+                                    "name": "Example Bad VM",
                                     "name_match": "first",
                                     "networks": [
                                         {
@@ -141,17 +142,17 @@
                                     "wait_for_ip_address_timeout": 300
                                 }
                             },
-                            "msg": "Unknown error while connecting to vCenter or ESXi API at example.host.com:443 : [Errno -2] Name or service not known"
+                            "msg": "Failed to import the required Python library (requests) on nirmatas-MBP-3's Python /Users/anusha/Documents/ansible-scan-demo/playbooks/.venv/bin/python3.12. Please read the module documentation and install it in the appropriate location. If the required library is installed, but Ansible is using the wrong Python interpreter, please consult the documentation on ansible_python_interpreter"
                         }
                     },
                     "task": {
                         "duration": {
-                            "end": "2024-09-24T18:15:43.901186Z",
-                            "start": "2024-09-24T18:15:43.585454Z"
+                            "end": "2024-09-26T13:21:42.851159Z",
+                            "start": "2024-09-26T13:21:42.396703Z"
                         },
-                        "id": "0242ac11-0003-503d-9fc3-000000000003",
-                        "name": "Create a new VM Example VM",
-                        "path": "/workspaces/ubuntu/nirmata/ansible-scan-demo/vm_setup.yaml:5"
+                        "id": "829374ac-bf7a-35a3-e75b-000000000003",
+                        "name": "Create a bad VM Example VM",
+                        "path": "/Users/anusha/Documents/ansible-scan-demo/playbooks/bad_vm_setup.yaml:5"
                     }
                 }
             ]
@@ -160,9 +161,9 @@
     "stats": {
         "localhost": {
             "changed": 0,
-            "failures": 0,
-            "ignored": 1,
-            "ok": 1,
+            "failures": 1,
+            "ignored": 0,
+            "ok": 0,
             "rescued": 0,
             "skipped": 0,
             "unreachable": 0
