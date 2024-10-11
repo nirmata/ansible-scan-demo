@@ -2,7 +2,7 @@
   hosts: localhost
   gather_facts: no
   tasks:
-    - name: Create a bad VM Example VM
+    - name: Create a bad VM Test Example VM
       community.vmware.vmware_guest:
         hostname: "example.host.com"
         username: "exampleusername"
